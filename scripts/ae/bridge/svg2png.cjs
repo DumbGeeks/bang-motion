@@ -1,11 +1,11 @@
 // Render semua SVG di <folder> ke PNG transparan dengan ukuran asli SVG (sudah 2×).
-// pakai: node render-svg.cjs <folder>
+// pakai: npm install (sekali, di folder ini), lalu: node svg2png.cjs <folder>
 const puppeteer = require('puppeteer');
 const fs = require('fs'), path = require('path');
 (async () => {
   const dir = path.resolve(process.argv[2]);
   const files = fs.readdirSync(dir).filter(f => f.endsWith('.svg'));
-  const browser = await puppeteer.launch({ headless: 'new' });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   for (const f of files) {
     const svg = fs.readFileSync(path.join(dir, f), 'utf8');

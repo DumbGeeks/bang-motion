@@ -225,12 +225,13 @@ The skill triggers on requests like "make an opener…", "promo video…", "expl
 | To… | You need |
 |---|---|
 | **Watch** the result | a browser + internet (GSAP and fonts load from a CDN). Nothing else. |
-| Verify frames automatically | Node + puppeteer (`scripts/snap.mjs`) — optional; `?debug=1` works by hand |
-| Export MP4 | Node + puppeteer + ffmpeg (`scripts/export-frames.mjs`) — optional |
+| Verify frames automatically | Node + puppeteer (`scripts/snap.mjs`) — optional. Run `npm i puppeteer` in your project folder and run the script from there; `?debug=1` works by hand |
+| Export MP4 | Node + puppeteer + ffmpeg (`scripts/export-frames.mjs`) — optional. Same folder rule as above |
 | Sync to voice-over | ffmpeg, **or** nothing: `scripts/vo-pauses.html` detects pauses in the browser |
 | Use video clips | MP4 (H.264) or WebM files in `assets/` — optional |
+| Head expressions (`scripts/kepala-ekspresi.py`) | Python 3 + Pillow + numpy + opencv-python — optional |
 | Generate images | any image MCP the agent can call — optional |
-| Build in After Effects | After Effects + the Higgsfield MCP bridge — optional |
+| Build in After Effects | After Effects + the Higgsfield MCP bridge; run `npm install` in `scripts/ae/bridge/` first — optional |
 
 A deliverable never needs `npm install` to be watched.
 

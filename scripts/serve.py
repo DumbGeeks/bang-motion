@@ -4,7 +4,7 @@ http.server bawaan membiarkan browser menyimpan modul JS pakai heuristik,
 jadi edit timeline/scene kadang tidak terlihat setelah reload biasa.
 Cache-Control: no-store memaksa browser mengambil berkas segar setiap kali.
 
-Pakai:  python tools/serve.py   (port 5178)
+Pakai:  python <path>/serve.py   (port 5178, dijalankan dari folder proyek)
 """
 import sys
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer

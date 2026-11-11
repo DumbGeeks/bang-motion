@@ -9,7 +9,8 @@
    bila user minta MP4).
 
    Prasyarat (opsional — tanpa Node, verifikasi manual lewat ?debug=1):
-     npm i puppeteer            (sekali, di folder mana pun; jalankan dari sana)
+     npm i puppeteer            (sekali, di folder PROYEK; jalankan snap.mjs dari folder itu —
+                                 skrip mencari puppeteer dari folder tempat perintah dijalankan)
 
    Pakai (dari folder proyek, tanpa server; berkas dibuka lewat file://):
      node <path>/snap.mjs shots 1 3.5 8 12 20
@@ -21,15 +22,19 @@
    Halaman harus mengekspos window.OPENER = { W, H, ready, seek(t) } — semua
    starter di skill ini sudah begitu. ?clean=1 menahan autoplay & panel.
    ========================================================= */
-import puppeteer from 'puppeteer';
+import { createRequire } from 'node:module';
+import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { mkdir } from 'node:fs/promises';
+
+// puppeteer dicari dari folder proyek (tempat perintah dijalankan), bukan dari folder skrip ini
+const puppeteer = createRequire(join(process.cwd(), 'package.json'))('puppeteer');
 
 const [outDir, ...times] = process.argv.slice(2);
 if (!outDir || !times.length) { console.log('pakai: node snap.mjs <folder-output> <detik> [<detik> ...]'); process.exit(1); }
 const URL = process.env.URL || pathToFileURL(process.cwd()).href + '/index.html?clean=1';
 await mkdir(outDir, { recursive: true });
-const browser = await puppeteer.launch({ headless: 'new', args: ['--enable-gpu', '--use-gl=angle', '--enable-webgl', '--ignore-gpu-blocklist', '--autoplay-policy=no-user-gesture-required'] });
+const browser = await puppeteer.launch({ headless: true, args: ['--enable-gpu', '--use-gl=angle', '--enable-webgl', '--ignore-gpu-blocklist', '--autoplay-policy=no-user-gesture-required'] });
 const page = await browser.newPage();
 page.on('pageerror', e => console.log('PAGEERROR', e.message));
 await page.goto(URL, { waitUntil: 'networkidle0' });

@@ -131,7 +131,7 @@ VO, yang berbeda hanya cara produksinya.
 | Intro / outro kanal | 5–12 dtk | nama kanal + tanda tangan gerak yang sama tiap episode | alur kerja di bawah |
 | Kinetic typography / lirik | 15–60 dtk | teks adalah subjek; split per kata/huruf; ritme mengikuti audio | `techniques.md` (split + blur berarah, pan 3D per kata) |
 | Title / lower third / bumper segmen | 2–6 dtk | elemen kecil di atas footage, masuk-keluar bersih, latar transparan | `techniques.md` |
-| Explainer / video penjelasan | 30–90 dtk | fakta bersumber, entitas tampil, sudut pandang berganti, lima gaya | `references/explainer.md` + starter per gaya |
+| Explainer / video penjelasan | 30–90 dtk | fakta bersumber, entitas tampil, sudut pandang berganti, enam gaya | `references/explainer.md` + starter per gaya |
 
 ## Explainer dan karakter: baca sebelum menentukan shot
 
@@ -244,7 +244,11 @@ gagal: opener adalah wajah produk, dan dua produk tidak boleh berwajah sama.
    (`references/opener-konsep.md`). Warna baru di atas urutan adegan lama
    tetap template.
    Jangan membuka folder proyek lama untuk "contoh" — yang boleh diwarisi
-   hanya aturan di skill ini.
+   hanya aturan di skill ini. Agar aturan 4 bisa dicek, tulis sidik jari
+   proyek (palet, font display, bahasa latar, tanda tangan gerak, konsep,
+   sidik jari struktur) ke `fingerprint.md` di folder proyek. Di proyek
+   berikutnya, bila user punya sidik jari proyek sebelumnya, minta user
+   menempelkannya di chat — jangan membuka folder lama — lalu bandingkan.
 5. **Latar tidak default gelap.** Tanpa aturan ini semua opener cenderung
    keluar gelap dengan nebula karena starter dan contoh-contohnya gelap. Latar mengikuti
    tema: gradien terang, warna lembut, blok warna, kertas, foto, atau gelap
@@ -316,7 +320,9 @@ bagian 1 dan 1b. Ringkasnya:
 - Dua adegan berturut-turut tidak boleh sama dalam ukuran, arah masuk, dan
   posisi teks.
 - Di KANTONG TEKS (bukan seluruh frame), latar harus GELAP (≤ 25 %
-  luminance) atau TERANG (≥ 80 %), tidak pernah "ramai sedang". Di luar
+  luminance) atau TERANG (≥ 80 %), tidak pernah "ramai sedang". Luminance
+  = luminansi relatif WCAG (0 % = hitam, 100 % = putih), dirata-rata di
+  kotak teks. Di luar
   kantong, latar justru harus kaya: gradien, cahaya, tekstur (§7d) — flat
   satu warna ditolak. Elemen latar apa pun (partikel, bentuk,
   tekstur, garis): warna dari sisi gelap palet, opacity ≤ .35 di kantong
@@ -328,7 +334,7 @@ bagian 1 dan 1b. Ringkasnya:
 
 0. **Kenali jenisnya** (tabel "Jenis pekerjaan"). Explainer → buka
    `references/explainer.md` dan ikuti "Langkah nol" di sana: SATU
-   pertanyaan berisi gaya (lima pilihan + rekomendasi), rasio, durasi,
+   pertanyaan berisi gaya (enam pilihan + rekomendasi), rasio, durasi,
    suara, plus pagar durasi. Jenis lain → lanjut; tanya hanya hal yang
    benar-benar tidak bisa diturunkan dari brief (rasio, durasi, ada
    musik/VO atau tidak), dalam satu pertanyaan.

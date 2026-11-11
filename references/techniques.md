@@ -131,7 +131,7 @@ sorotan: pintu teks saja (mis. per kata atau redup → penuh); hapus span `.hl`,
 Contoh kegagalan: 96 batang cahaya putih dengan bloom aditif lebih
 terang daripada judulnya → huruf putih kehilangan tepi dan latar terasa
 ramai tanpa kontras. Aturan yang bisa diukur:
-- **Kantong teks**: di area teks, luminance latar ≤ 25 % (gelap) untuk
+- **Kantong teks**: di area teks (luminance WCAG relatif, dirata-rata di kotak teks; definisi di SKILL.md Hukum #4), latar ≤ 25 % (gelap) untuk
   teks putih, atau ≥ 80 % (terang) untuk teks ink. Bila latar ramai,
   letakkan `.pocket` (radial-gradient gelap 55 % → transparan) di bawah
   teks dan nyalakan bersama teksnya.

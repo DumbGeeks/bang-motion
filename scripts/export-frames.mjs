@@ -6,16 +6,20 @@
    yang drop walau satu frame butuh 300 ms untuk dirender.
 
    Prasyarat:
-     npm i puppeteer
+     npm i puppeteer                 (di folder PROYEK; skrip dijalankan dari sana)
      python -m http.server 5178      (di folder proyek, jendela lain)
 
-   Pakai:
-     node tools/export-frames.mjs
+   Pakai (dari folder proyek):
+     node <path>/export-frames.mjs
      ffmpeg -framerate 60 -i frames/f%05d.png -c:v libx264 -pix_fmt yuv420p -crf 16 opener.mp4
    ========================================================= */
 
-import puppeteer from 'puppeteer';
+import { createRequire } from 'node:module';
+import { join } from 'node:path';
 import { mkdir } from 'node:fs/promises';
+
+// puppeteer dicari dari folder proyek (tempat perintah dijalankan), bukan dari folder skrip ini
+const puppeteer = createRequire(join(process.cwd(), 'package.json'))('puppeteer');
 
 const URL   = process.env.URL   || 'http://127.0.0.1:5178/index.html?clean=1';
 const FPS   = Number(process.env.FPS   || 60);
@@ -25,7 +29,7 @@ const SCALE = Number(process.env.SCALE || 1);   // 1 = 1920x1080, 0.5 = 960x540
 await mkdir(OUT, { recursive: true });
 
 const browser = await puppeteer.launch({
-  headless: 'new',
+  headless: true,
   args: ['--enable-gpu', '--use-gl=angle', '--enable-webgl', '--ignore-gpu-blocklist'],
 });
 const page = await browser.newPage();
